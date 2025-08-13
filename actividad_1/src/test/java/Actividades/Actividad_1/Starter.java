@@ -1,6 +1,6 @@
 package Actividades.Actividad_1;
 
-import Actividades.Actividad_1.ui.CLI;
+import Actividades.Actividad_1.ui.MAIN;
 
 public class Starter {
 
@@ -9,6 +9,6 @@ public class Starter {
      * @param args Es el arreglo de cadenas
     */
     public static void main(String[] args) {
-        CLI.runApp();
+        MAIN.runApp();
     } 
     }
