@@ -1,9 +1,8 @@
 package Actividades.Actividad_1.models;
 
+import java.util.ArrayList;
 import java.util.Scanner;
-
 import Actividades.Actividad_1.process.Ball;
-import Actividades.Actividad_1.ui.MAIN;
 
 public class Circular {
 
@@ -21,8 +20,11 @@ public class Circular {
                 case 2:
                     Ball.del();
                     break;
-
                 case 3:
+                    Ball.search();
+                    break;
+
+                case 4:
                     Ball.show();
                     break;
 
@@ -37,11 +39,12 @@ public class Circular {
     private static void showMenu(){
         System.out.println("""
             \n   ******************************************************   
-               ************** Bienvenido a lista Circular *************
+               ************** Bienvenido a lista Circular ***********
                ***************** ¿Que deseas hacer? *****************
                *******************  1.- Agregar  ********************
                *******************  2.- Eliminar  *******************
-               *******************  3.- Buscar  *********************    
+               *******************  3.- Buscar  *********************
+               *******************  4.- Mostrar  ********************    
                ********************  0.- Back  **********************
                ******************************************************""");
     }
