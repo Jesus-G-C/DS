@@ -5,26 +5,26 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class DoubleL {
-    public static ArrayList<String> games = new ArrayList<>(Arrays.asList("Fortinaity", "BABAG", "GTA VI"));
+    public static ArrayList<String> version = new ArrayList<>(Arrays.asList("10.2", "10.1", "10.0"));
     
     // Clase interna Nodo
     static class Node {
-        String game;
+        String versions;
         Node prev;
         Node next;
 
-        Node(String game) {
-            this.game = game;
+        Node(String versions) {
+            this.versions = versions;
         }
     }
 
     static Node head = null;
     static Node tail = null;
 
-    // 📌 Inicializar lista con juegos del ArrayList
+    // Inicializar lista con juegos del ArrayList
     static {
-        for (String game : games) {
-            Node newNode = new Node(game);
+        for (String versions : version) {
+            Node newNode = new Node(versions);
             if (head == null) {
                 head = tail = newNode;
             } else {
@@ -33,21 +33,19 @@ public class DoubleL {
                 tail = newNode;
             }
         }
-        System.out.println("📌 Lista inicial cargada con juegos: " + games);
     }
     
 
     // 📌 Agregar juegos al final de la lista doblemente enlazada
     public static void dladd() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("¿Cuántos juegos desea agregar?");
-        int count = scanner.nextInt();
-        scanner.nextLine(); // limpiar salto de línea
+        
+       
 
-        for (int i = 0; i < count; i++) {
-            System.out.println("Ingrese el nombre del juego:");
-            String game = scanner.nextLine();
-            Node newNode = new Node(game);
+           
+            System.out.println("Ingrese la version que guste:");
+            String versions = scanner.nextLine();
+            Node newNode = new Node(versions);
 
             if (head == null) { // lista vacía
                 head = tail = newNode;
@@ -56,8 +54,8 @@ public class DoubleL {
                 newNode.prev = tail;
                 tail = newNode;
             }
-            System.out.println("Juego agregado exitosamente: " + game);
-        }
+            System.out.println("version agregada exitosamente: " + versions);
+        
     }
 
     // 📌 Buscar un juego por nombre
@@ -68,21 +66,21 @@ public class DoubleL {
         }
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el nombre del juego a buscar:");
-        String searchGame = scanner.nextLine();
+        System.out.println("Ingrese el nombre de la version a buscar:");
+        String searchversions = scanner.nextLine();
 
         Node current = head;
         boolean found = false;
         while (current != null) {
-            if (current.game.equalsIgnoreCase(searchGame)) {
-                System.out.println("✅ Juego encontrado: " + current.game);
+            if (current.versions.equalsIgnoreCase(searchversions)) {
+                System.out.println("✅ version encontrada: " + current.versions);
                 found = true;
                 break;
             }
             current = current.next;
         }
         if (!found) {
-            System.out.println("❌ Juego no encontrado.");
+            System.out.println("❌ version no encontrada.");
         }
     }
 
@@ -94,14 +92,14 @@ public class DoubleL {
         }
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el nombre del juego a eliminar:");
-        String deleteGame = scanner.nextLine();
+        System.out.println("Ingrese el nombre de la version a eliminar:");
+        String deleteversions = scanner.nextLine();
 
         Node current = head;
         boolean deleted = false;
 
         while (current != null) {
-            if (current.game.equalsIgnoreCase(deleteGame)) {
+            if (current.versions.equalsIgnoreCase(deleteversions)) {
                 // Caso: único nodo
                 if (current.prev == null && current.next == null) {
                     head = tail = null;
@@ -123,44 +121,47 @@ public class DoubleL {
                 }
 
                 deleted = true;
-                System.out.println("🗑️ Juego eliminado: " + deleteGame);
+                System.out.println("🗑️ version eliminada: " + deleteversions);
                 break;
             }
             current = current.next;
         }
 
         if (!deleted) {
-            System.out.println("❌ Juego no encontrado.");
+            System.out.println("❌ version no encontrada.");
         }
     }
 
     // 📌 Mostrar lista desde el inicio hasta el final
-    public static void dlshow() {
-        if (head == null) {
-            System.out.println("La lista está vacía.");
-            return;
-        }
-        System.out.println("🎮 Lista de juegos (inicio → fin):");
-        Node current = head;
-        while (current != null) {
-            System.out.print(current.game + " <-> ");
-            current = current.next;
-        }
-        System.out.println("null");
+   // 📌 Mostrar lista de mayor a menor (sin alterar la lista original)
+public static void dlshow() {
+    if (head == null) {
+        System.out.println("La lista está vacía.");
+        return;
     }
 
-    // 📌 Mostrar lista desde el final hasta el inicio
-    public static void dlshowReverse() {
-        if (tail == null) {
-            System.out.println("La lista está vacía.");
-            return;
+    // Guardar versiones en una lista temporal
+    ArrayList<Double> tempList = new ArrayList<>();
+    Node current = head;
+    while (current != null) {
+        try {
+            tempList.add(Double.parseDouble(current.versions));
+        } catch (NumberFormatException e) {
+            System.out.println("⚠️ Valor no numérico encontrado: " + current.versions);
         }
-        System.out.println("🎮 Lista de juegos (fin → inicio):");
-        Node current = tail;
-        while (current != null) {
-            System.out.print(current.game + " <-> ");
-            current = current.prev;
-        }
-        System.out.println("null");
+        current = current.next;
     }
+
+    // Ordenar de mayor a menor
+    tempList.sort((a, b) -> Double.compare(b, a));
+
+    // Mostrar resultado
+    System.out.println("📋 Lista de versiones (mayor → menor):");
+    for (double v : tempList) {
+        System.out.print(v + " <-> ");
+    }
+    System.out.println("null");
+}
+
+
 }
