@@ -17,6 +17,36 @@ public class Link {
 
     private static Node head = null;
 
+    // Bloque estático para precargar juegos ordenados
+    static {
+        String[] juegos = {"Halo", "GTAV", "Call of Duty"};
+        for (String juego : juegos) {
+            insertSorted(juego);
+        }
+    }
+
+    // Inserta un nodo en la posición alfabética correcta
+    private static void insertSorted(String game) {
+        Node newNode = new Node(game);
+
+        // Caso: lista vacía o el nuevo dato es menor que la cabeza
+        if (head == null || game.compareToIgnoreCase(head.data) < 0) {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+
+        // Buscar la posición correcta
+        Node current = head;
+        while (current.next != null && game.compareToIgnoreCase(current.next.data) > 0) {
+            current = current.next;
+        }
+
+        // Insertar en la posición encontrada
+        newNode.next = current.next;
+        current.next = newNode;
+    }
+
     public static void add() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("¿Cuántos juegos desea agregar?");
@@ -25,17 +55,7 @@ public class Link {
         for (int i = 0; i < quantity; i++) {
             System.out.println("Ingrese el elemento #" + (i + 1) + ":");
             String game = scanner.nextLine();
-            Node newNode = new Node(game);
-
-            if (head == null) {
-                head = newNode;
-            } else {
-                Node temp = head;
-                while (temp.next != null) {
-                    temp = temp.next;
-                }
-                temp.next = newNode;
-            }
+            insertSorted(game);
         }
     }
 
@@ -56,7 +76,6 @@ public class Link {
             return;
         }
 
-        // Caso: buscar nodo intermedio
         Node temp = head;
         Node prev = null;
         boolean found = false;
