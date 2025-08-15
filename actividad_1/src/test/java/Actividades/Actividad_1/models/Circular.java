@@ -1,6 +1,5 @@
 package Actividades.Actividad_1.models;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import Actividades.Actividad_1.process.Ball;
 
