@@ -1,8 +1,8 @@
 package Actividades.Actividad_1.models;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import Actividades.Actividad_1.process.Ball;
+
+import Actividades.Actividad_1.process.LinkedList;
 
 public class Circular {
 
@@ -14,18 +14,18 @@ public class Circular {
         while (option != 0){
             switch (option){
                 case 1:
-                    Ball.add();
+                    LinkedList.add();
                     break;
 
                 case 2:
-                    Ball.del();
+                    LinkedList.del();
                     break;
                 case 3:
-                    Ball.search();
+                    LinkedList.search();
                     break;
 
                 case 4:
-                    Ball.show();
+                    LinkedList.show();
                     break;
 
                 default:
