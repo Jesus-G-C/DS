@@ -1,7 +1,7 @@
 package Actividades.Actividad_1.models;
 import java.util.Scanner;
 
-import Actividades.Actividad_1.process.DoubleL;
+import Actividades.Actividad_1.process.Ball;
 
 public class Dlinked {
 
