@@ -1,7 +1,7 @@
 package Actividades.Actividad_1.models;
 import java.util.Scanner;
 
-import Actividades.Actividad_1.process.Ball;
+import Actividades.Actividad_1.process.LinkedList;
 
 
 public class Dlinked {
@@ -16,23 +16,23 @@ public class Dlinked {
                 switch (option){
                     case 1://agrega un juego
                         System.out.println("Agregando version...");
-                        Ball.dladd();
+                        LinkedList.dladd();
                         
                         break;
     
                     case 2://busca una version
                         System.out.println("Buscando version...");
-                        Ball.Dlsearch();
+                        LinkedList.Dlsearch();
     
                         break;
     
                     case 3: //eliminar un juego
                         System.out.println("Eliminando version...");
-                        Ball.dldelete();
+                        LinkedList.dldelete();
                         break;
                     case 4: // mostrar mi cuenta
                         System.out.println("Mostrando version...");
-                        Ball.dlshow();
+                        LinkedList.dlshow();
                         break;
                     
     

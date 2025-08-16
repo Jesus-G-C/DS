@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Ball {
+public class LinkedList {
 
     public static ArrayList<String> games = new ArrayList<>(Arrays.asList("Halo","GTAV","Call of Duty"));
     
@@ -74,6 +74,10 @@ public class Ball {
         }
     }
 
+    ////////////////////////////
+    /// 
+    /// 
+    /// /// Double Linked List
     public static ArrayList<String> version = new ArrayList<>(Arrays.asList("10.2", "10.1", "10.0"));
     
     // Clase interna Nodo
@@ -231,8 +235,151 @@ public static void dlshow() {
     }
     System.out.println("null");
 }
+///////
+/// 
+/// 
+/// Linked Lisst
+///
+///  
 
-    
+private static class LNode {
+    String ldata;
+    LNode lnext;
+
+    LNode(String ldata) {
+        this.ldata = ldata;
+        this.lnext = null;
+    }
+}
+
+private static LNode lhead = null;
+
+// Bloque estático para precargar juegos ordenados
+static {
+    String[] juegos = { "The Witcher 3", "Red Dead Redemption 2", "LoL"};
+    for (String juego : juegos) {
+        insertSorted(juego);
+    }
+}
+
+// Inserta un nodo en la posición alfabética correcta
+private static void insertSorted(String lgame) {
+    LNode newLNode = new LNode(lgame);
+
+    // Caso: lista vacía o el nuevo dato es menor que la cabeza
+    if (lhead == null || lgame.compareToIgnoreCase(lhead.ldata) < 0) {
+        newLNode.lnext = lhead;
+        lhead = newLNode;
+        return;
+    }
+
+    // Buscar la posición correcta
+    LNode lcurrent = lhead;
+    while (lcurrent.lnext != null && lgame.compareToIgnoreCase(lcurrent.lnext.ldata) > 0) {
+        lcurrent = lcurrent.lnext;
+    }
+
+    // Insertar en la posición encontrada
+    newLNode.lnext = lcurrent.lnext;
+    lcurrent.lnext = newLNode;
+}
+
+public static void ladd() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("¿Cuántos juegos desea agregar?");
+    int quantity = scanner.nextInt(); scanner.nextLine();
+
+    for (int i = 0; i < quantity; i++) {
+        System.out.println("Ingrese el elemento #" + (i + 1) + ":");
+        String lgame = scanner.nextLine();
+        insertSorted(lgame);
+    }
+}
+
+public static void ldel() {
+    if (lhead == null) {
+        System.out.println("La lista está vacía.");
+        return;
+    }
+
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("¿Qué juego desea eliminar?");
+    String lgameToDelete = scanner.nextLine();
+
+    // Caso: eliminar cabeza
+    if (lhead.ldata.equalsIgnoreCase(lgameToDelete)) {
+        lhead = lhead.lnext;
+        System.out.println(lgameToDelete + " eliminado con éxito.");
+        return;
+    }
+
+    LNode ltemp = lhead;
+    LNode lprev = null;
+    boolean found = false;
+
+    while (ltemp != null) {
+        if (ltemp.ldata.equalsIgnoreCase(lgameToDelete)) {
+            lprev.lnext = ltemp.lnext;
+            found = true;
+            System.out.println(lgameToDelete + " eliminado con éxito.");
+            break;
+        }
+        lprev = ltemp;
+        ltemp = ltemp.lnext;
+    }
+
+    if (!found) {
+        System.out.println(lgameToDelete + " no se encuentra en la biblioteca.");
+    }
+}
+
+public static void lsearch() {
+    if (lhead == null) {
+        System.out.println("La lista está vacía.");
+        return;
+    }
+
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("¿Qué juego desea buscar?");
+    String lgameToSearch = scanner.nextLine();
+
+    LNode ltemp = lhead;
+    boolean found = false;
+
+    while (ltemp != null) {
+        if (ltemp.ldata.equalsIgnoreCase(lgameToSearch)) {
+            found = true;
+            break;
+        }
+        ltemp = ltemp.lnext;
+    }
+
+    if (found) {
+        System.out.println(lgameToSearch + " está en la biblioteca.");
+    } else {
+        System.out.println(lgameToSearch + " no se encuentra en la biblioteca.");
+    }
+}
+
+public static void lshow() {
+    if (lhead == null) {
+        System.out.println("La lista está vacía.");
+        return;
+    }
+
+    System.out.println("**********  Tu biblioteca  **********");
+    LNode ltemp = lhead;
+    while (ltemp != null) {
+        System.out.println("- " + ltemp.ldata);
+        ltemp = ltemp.lnext;
+    }
+}
+
+
+
+
+
+
 }
 
 
