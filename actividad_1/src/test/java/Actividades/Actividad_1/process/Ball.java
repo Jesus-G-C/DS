@@ -73,10 +73,6 @@ public class Ball {
             System.out.println("- " + game);
         }
     }
-}
-
-
-class DoubleL {
     public static ArrayList<String> version = new ArrayList<>(Arrays.asList("10.2", "10.1", "10.0"));
     
     // Clase interna Nodo
@@ -233,8 +229,14 @@ public static void dlshow() {
         System.out.print(v + " <-> ");
     }
     System.out.println("null");
+    }
+
+
+
+
+
 }
 
 
-}
 
+    

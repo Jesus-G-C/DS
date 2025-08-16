@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import Actividades.Actividad_1.process.Ball;
 
+
 public class Dlinked {
 
     public static void dthreaded(){
@@ -15,23 +16,23 @@ public class Dlinked {
                 switch (option){
                     case 1://agrega un juego
                         System.out.println("Agregando version...");
-                        DoubleL.dladd();
+                        Ball.dladd();
                         
                         break;
     
                     case 2://busca una version
                         System.out.println("Buscando version...");
-                        DoubleL.Dlsearch();
+                        Ball.Dlsearch();
     
                         break;
     
                     case 3: //eliminar un juego
                         System.out.println("Eliminando version...");
-                        DoubleL.dldelete();
+                        Ball.dldelete();
                         break;
                     case 4: // mostrar mi cuenta
                         System.out.println("Mostrando version...");
-                        DoubleL.dlshow();
+                        Ball.dlshow();
                         break;
                     
     
