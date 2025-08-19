@@ -1,7 +1,6 @@
 package Actividades.Actividad_1.models;
 
 import java.util.Scanner;
-
 import Actividades.Actividad_1.process.LinkedList;
 
 public class Circular {
@@ -20,6 +19,7 @@ public class Circular {
                 case 2:
                     LinkedList.del();
                     break;
+
                 case 3:
                     LinkedList.search();
                     break;
@@ -27,9 +27,21 @@ public class Circular {
                 case 4:
                     LinkedList.show();
                     break;
+                
+                case 5:
+                    LinkedList.fifo();
+                    break;
 
+                case 6:
+                    LinkedList.lifo();
+                    break;
+
+                case 0:
+                    System.out.println("👋 Saliendo... ¡Hasta luego Jesús!");
+                    break;
+                
                 default:
-                    System.out.println("Opcion invalida");
+                    System.out.println("⚠️ Opción no válida, intenta de nuevo.");
             }
             showMenu();
             option = scanner.nextInt();scanner.nextLine();
@@ -38,15 +50,18 @@ public class Circular {
 
     private static void showMenu(){
         System.out.println("""
-            \n   ******************************************************   
-               ************** Bienvenido a lista Circular ***********
-               ***************** ¿Que deseas hacer? *****************
-               *******************  1.- Agregar  ********************
-               *******************  2.- Eliminar  *******************
-               *******************  3.- Buscar  *********************
-               *******************  4.- Mostrar  ********************    
-               ********************  0.- Back  **********************
-               ******************************************************""");
+            
+            ╔═══════════════════════════════════════════════╗
+            ║        🌟 Bienvenido Jesús 🌟                ║
+            ║═══════════════════════════════════════════════║
+            ║  1️⃣  Agregar juego                           ║
+            ║  2️⃣  Eliminar juego                          ║
+            ║  3️⃣  Buscar juego                            ║
+            ║  4️⃣  Mostrar biblioteca                      ║
+            ║  5️⃣  Mostrar en orden FIFO 📥                ║
+            ║  6️⃣  Mostrar en orden LIFO 📤                ║
+            ║  0️⃣  Salir 🚪                                ║
+            ╚═══════════════════════════════════════════════╝
+            """);
     }
-
 }

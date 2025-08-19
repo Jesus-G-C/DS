@@ -12,20 +12,21 @@ public class LinkedList {
     public static void add(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("¿Cuantos juegos desea agregar?");
+        System.out.println("📝 ¿Cuántos juegos desea agregar?");
         int cuantity = scanner.nextInt();scanner.nextLine();
 
         for (int i = 0; i < cuantity; i++){
-            System.out.println("Ingrese el elemento #" + (i+1) + ":");
+            System.out.println("🎮 Ingrese el juego #" + (i+1) + ":");
             String game = scanner.nextLine();
             games.add(game);
         }
+        System.out.println("✅ Juegos agregados correctamente.");
     }
 
     public static void del(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("¿Que juego desea eliminar?");
+        System.out.println("❌ ¿Qué juego desea eliminar?");
         String gameToDelete = scanner.nextLine();
 
         boolean found = false;
@@ -33,20 +34,20 @@ public class LinkedList {
             if (games.get(i).equalsIgnoreCase(gameToDelete)){
                 games.remove(i);
                 found = true;
-                System.out.println(gameToDelete + " Eliminado con exito.");
+                System.out.println("🗑️ " + gameToDelete + " eliminado con éxito.");
                 break;
             }
         }
 
         if (!found){
-            System.out.println(gameToDelete + " No cuentas con el juego");
+            System.out.println("⚠️ " + gameToDelete + " no se encontró en tu biblioteca.");
         }
     }
 
     public static void search(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("¿Que juego desea buscar?");
+        System.out.println("🔍 ¿Qué juego desea buscar?");
         String gameToSearch = scanner.nextLine();
 
         boolean found = false;
@@ -58,19 +59,34 @@ public class LinkedList {
         }
 
         if(found){
-            System.out.println(gameToSearch + " Esta en la biblioteca");
+            System.out.println("✅ " + gameToSearch + " está en tu biblioteca.");
         } else{
-            System.out.println(gameToSearch + " No cuentas con el juego");
+            System.out.println("⚠️ " + gameToSearch + " no está en tu biblioteca.");
         }
     }
 
     public static void show(){
         Collections.sort(games, String.CASE_INSENSITIVE_ORDER);
 
-        System.out.println("**********  Tu biblioteca  **********");
-
+        System.out.println("\n📚 **********  Tu biblioteca (ordenada) **********");
         for (String game:games){
-            System.out.println("- " + game);
+            System.out.println("🎮 " + game);
+        }
+    }
+
+    // Mostrar en orden FIFO (primero en entrar, primero en salir)
+    public static void fifo(){
+        System.out.println("\n📥 ********** Biblioteca en orden FIFO **********");
+        for (String game : games){
+            System.out.println("➡️ " + game);
+        }
+    }
+
+    // Mostrar en orden LIFO (último en entrar, primero en salir)
+    public static void lifo(){
+        System.out.println("\n📤 ********** Biblioteca en orden LIFO **********");
+        for (int i = games.size() - 1; i >= 0; i--){
+            System.out.println("⬅️ " + games.get(i));
         }
     }
 
