@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class LinkedList {
 
@@ -375,13 +376,60 @@ public static void lshow() {
     }
 }
 
+    private static Stack<String> stack = new Stack<>();
 
+    // Precargar pila
+    static {
+        stack.push("Minecraft");
+        stack.push("Skyrim");
+        stack.push("Elden Ring");
+    }
 
+    // Agregar elemento a la pila (Push)
+    public static void push() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el juego a agregar en la pila:");
+        String game = scanner.nextLine();
+        stack.push(game);
+        System.out.println("Juego agregado a la pila: " + game);
+    }
 
+    // Eliminar elemento de la pila (Pop)
+    public static void pop() {
+        if (stack.isEmpty()) {
+            System.out.println("La pila está vacía.");
+        } else {
+            String removed = stack.pop();
+            System.out.println("Juego eliminado de la pila: " + removed);
+        }
+    }
 
+    // Ver el último elemento agregado (Peek)
+    public static void peek() {
+        if (stack.isEmpty()) {
+            System.out.println("La pila está vacía.");
+        } else {
+            System.out.println("Último juego en la pila: " + stack.peek());
+        }
+    }
 
+    // Mostrar pila completa
+    public static void showStack() {
+        if (stack.isEmpty()) {
+            System.out.println("La pila está vacía.");
+        } else {
+            System.out.println("**********  Pila de juegos (LIFO) **********");
+            for (int i = stack.size() - 1; i >= 0; i--) {
+                System.out.println("- " + stack.get(i));
+            }
+        }
+    }
 }
 
 
 
-    
+
+
+
+
+
