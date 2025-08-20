@@ -181,12 +181,19 @@ public class LinkedList {
         }
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el nombre de la version a eliminar:");
+        System.out.println("Ingrese la version a eliminar:");
         String deleteversions = scanner.nextLine();
 
         Node current = head;
         boolean deleted = false;
 
+        Scanner eliminar = new Scanner(System.in);
+        System.out.println("⚠️ Está a punto de eliminar la version: " + deleteversions);
+        System.out.print("⚠️ ¿Está seguro de eliminarlo? (s/n): ");
+        String confirm = eliminar.nextLine();
+
+
+        if (confirm.equalsIgnoreCase("s")) {
         while (current != null) {
             if (current.versions.equalsIgnoreCase(deleteversions)) {
                 // Caso: único nodo
@@ -220,6 +227,7 @@ public class LinkedList {
             System.out.println("❌ version no encontrada.");
         }
     }
+}
 
     // 📌 Mostrar lista desde el inicio hasta el final
    // 📌 Mostrar lista de mayor a menor (sin alterar la lista original)
@@ -251,6 +259,37 @@ public static void dlshow() {
     }
     System.out.println("null");
 }
+
+// Mostrar en orden FIFO (primero en entrar, primero en salir)
+public static void dlfifo() {
+    if (head == null) {
+        System.out.println("La lista está vacía.");
+        return;
+    }
+
+    System.out.println("\n📥 ═══════════════ Versiones mas recientes ═══════════════");
+    Node current = head;
+    while (current != null) {
+        System.out.println("➡️ " + current.versions);
+        current = current.next;
+    }
+}
+
+// Mostrar en orden LIFO (último en entrar, primero en salir)
+public static void dlifo() {
+    if (tail == null) {
+        System.out.println("La lista está vacía.");
+        return;
+    }
+
+    System.out.println("\n📤 ═══════════════ Versiones mas antiguas ═══════════════");
+    Node current = tail;
+    while (current != null) {
+        System.out.println("⬅️ " + current.versions);
+        current = current.prev;
+    }
+}
+
 ///////
 /// 
 /// 

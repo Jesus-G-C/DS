@@ -21,18 +21,26 @@ public class Dlinked {
                         break;
     
                     case 2://busca una version
-                        System.out.println("Buscando version...");
-                        LinkedList.Dlsearch();
+                        System.out.println("Eliminando version...");
+                        LinkedList.dldelete();
     
                         break;
     
                     case 3: //eliminar un juego
-                        System.out.println("Eliminando version...");
-                        LinkedList.dldelete();
+                        System.out.println("Buscando version...");
+                        LinkedList.Dlsearch();
                         break;
                     case 4: // mostrar mi cuenta
                         System.out.println("Mostrando version...");
                         LinkedList.dlshow();
+                        break;
+                    case 5: //mostrar en orden FIFO
+                        System.out.println("Mostrando versiones mas recientes...");
+                        LinkedList.dlfifo();
+                        break;
+                    case 6: //mostrar en orden LIFO
+                        System.out.println("Mostrando versiones mas antiguas...");
+                        LinkedList.dlifo();
                         break;
                     
     
@@ -46,19 +54,24 @@ public class Dlinked {
     
     }
 
-    public static void dlmenu(){
+    private static void dlmenu(){
         System.out.println("""
-            \n   ******************************************************   
-               ********************* Bienvenido *********************
-               ***************** Double-Linked arrays ***************
-               ***************** ¿Que deseas hacer? *****************
-               ***************   1.- Agregar version    *************
-               *****************  2.- Buscar version  ***************
-               ****************  3.- Eliminar version  **************
-               ****************  4.- Mostrar version **************** 
-               **************** 0. Regresar al menu *****************
-               ******************************************************""");
+            
+            ╔═══════════════════════════════════════════════╗
+            ║        🌟 Bienvenido Alex 💽!!! 🌟            ║
+            ║═══════════════════════════════════════════════║
+            ║  1️⃣  Agregar version 🔼                        ║
+            ║  2️⃣  Eliminar version 🗑️                        ║
+            ║  3️⃣  Buscar version 🔎                         ║
+            ║  4️⃣  Mostrar versiones 🗂️                       ║
+            ║  5️⃣  Mostrar ultimas versiones agregadas 📥    ║
+            ║  6️⃣  Mostrar primeras versiones agregadas 📤   ║
+            ║  0️⃣  Salir 🚪                                  ║
+            ╚═══════════════════════════════════════════════╝
+            """);
     }
+
+//no me pises pa 👀
 
     
 
