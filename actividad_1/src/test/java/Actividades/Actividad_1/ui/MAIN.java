@@ -3,6 +3,7 @@ package Actividades.Actividad_1.ui;
 import Actividades.Actividad_1.models.Circular;
 import Actividades.Actividad_1.models.Dlinked;
 import Actividades.Actividad_1.models.Linked;
+import Actividades.Actividad_1.models.Lifo;
 import java.util.Scanner;
 
 public class MAIN {
@@ -27,6 +28,9 @@ public class MAIN {
                     Circular.round();
                     break;
 
+                case 4:
+                    Lifo.stackMenu();
+                    break;
                 case 0:
                     System.out.print("❓ ¿Seguro que deseas salir? (s/n): ");
                     String confirm = scanner.nextLine().trim().toLowerCase();
@@ -55,6 +59,7 @@ public class MAIN {
             ║  1️⃣  Acceder como Daniel                     ║
             ║  2️⃣  Acceder como Alex                       ║
             ║  3️⃣  Acceder como Jesús                      ║
+            ║  4️⃣  ️ ️Acceder como Lifo
             ║  0️⃣  Salir 🚪                                ║
             ╚═══════════════════════════════════════════════╝
             """);
