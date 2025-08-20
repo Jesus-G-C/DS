@@ -267,7 +267,7 @@ public static void dlfifo() {
         return;
     }
 
-    System.out.println("\n📥 ═══════════════ Versiones mas recientes ═══════════════");
+    System.out.println("\n📥 ═══════════════ Ultimas versiones agregadas ═══════════════");
     Node current = head;
     while (current != null) {
         System.out.println("➡️ " + current.versions);
@@ -282,7 +282,7 @@ public static void dlifo() {
         return;
     }
 
-    System.out.println("\n📤 ═══════════════ Versiones mas antiguas ═══════════════");
+    System.out.println("\n📤 ═══════════════ Primeras versiones agregadas ═══════════════");
     Node current = tail;
     while (current != null) {
         System.out.println("⬅️ " + current.versions);
