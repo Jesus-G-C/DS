@@ -3,6 +3,7 @@ package Actividades.Actividad_1.ui;
 import Actividades.Actividad_1.models.Circular;
 import Actividades.Actividad_1.models.Dlinked;
 import Actividades.Actividad_1.models.Linked;
+
 import java.util.Scanner;
 
 public class MAIN {
@@ -26,6 +27,7 @@ public class MAIN {
                 case 3:
                     Circular.round();
                     break;
+
 
                 case 0:
                     System.out.print("❓ ¿Seguro que deseas salir? (s/n): ");
