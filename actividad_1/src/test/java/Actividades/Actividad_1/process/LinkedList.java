@@ -3,8 +3,8 @@ package Actividades.Actividad_1.process;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class LinkedList {
 
@@ -237,30 +237,14 @@ public class LinkedList {
             System.out.println("La lista está vacía.");
             return;
         }
-
-        // Guardar versiones en una lista temporal
-        ArrayList<Double> tempList = new ArrayList<>();
+        System.out.println("🎮 Lista de versiones (inicio → fin):");
         Node current = head;
         while (current != null) {
-            try {
-                tempList.add(Double.parseDouble(current.versions));
-            } catch (NumberFormatException e) {
-                System.out.println("⚠️ Valor no numérico encontrado: " + current.versions);
-            }
+            System.out.print(current.versions + " <-> ");
             current = current.next;
         }
-
-        // Ordenar de mayor a menor
-        tempList.sort((a, b) -> Double.compare(b, a));
-
-
-    // Mostrar resultado
-    System.out.println("📋 Lista de versiones (mayor → menor):");
-    for (double v : tempList) {
-        System.out.print(v + " <-> ");
+        System.out.println("null");
     }
-    System.out.println("null");
-}
 
 // Mostrar en orden FIFO (primero en entrar, primero en salir)
 public static void dlfifo() {
@@ -298,23 +282,6 @@ public static void dlifo() {
 /// Linked Lisst
 ///
 ///  
-
-private static class LNode {
-    String ldata;
-    LNode lnext;
-
-    LNode(String ldata) {
-        this.ldata = ldata;
-        this.lnext = null;
-
-        // Mostrar resultado
-        System.out.println("📋 Lista de versiones (mayor → menor):");
-        for (double v : tempList) {
-            System.out.print(v + " <-> ");
-        }
-        System.out.println("null");
-    }
-
     /// ////
     ///
     ///
