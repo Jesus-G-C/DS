@@ -1,4 +1,4 @@
-package Actividades.act3.models;
+package Actividades.Actividad_Hospital.models;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
