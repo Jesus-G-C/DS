@@ -1,13 +1,11 @@
 package Actividades.Actividad_4.models;
 
 public class Nodo {
-    public int id;
-    public String nombre;
+    public Empleado empleado;
     public Nodo izquierdo, derecho;
 
-    public Nodo(int id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
+    public Nodo(Empleado empleado) {
+        this.empleado = empleado;
         this.izquierdo = null;
         this.derecho = null;
     }

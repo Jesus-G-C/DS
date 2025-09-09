@@ -1,5 +1,6 @@
 package Actividades.Actividad_4.process;
 
+import Actividades.Actividad_4.models.Empleado;
 import Actividades.Actividad_4.models.Nodo;
 
 public class ArbolBinario {
@@ -10,18 +11,19 @@ public class ArbolBinario {
     }
 
     // Insertar nodo en el árbol
-    public void insertar(int id, String nombre) {
-        raiz = insertarRecursivo(raiz, id, nombre);
+    public void insertar(int id, String nombre, String rol, String departamento) {
+        Empleado empleado = new Empleado(id, nombre, rol, departamento);
+        raiz = insertarRecursivo(raiz, empleado);
     }
 
-    private Nodo insertarRecursivo(Nodo actual, int id, String nombre) {
+    private Nodo insertarRecursivo(Nodo actual, Empleado empleado) {
         if (actual == null) {
-            return new Nodo(id, nombre);
+            return new Nodo(empleado);
         }
-        if (id < actual.id) {
-            actual.izquierdo = insertarRecursivo(actual.izquierdo, id, nombre);
-        } else if (id > actual.id) {
-            actual.derecho = insertarRecursivo(actual.derecho, id, nombre);
+        if (empleado.getId() < actual.empleado.getId()) {
+            actual.izquierdo = insertarRecursivo(actual.izquierdo, empleado);
+        } else if (empleado.getId() > actual.empleado.getId()) {
+            actual.derecho = insertarRecursivo(actual.derecho, empleado);
         }
         return actual;
     }
@@ -32,10 +34,12 @@ public class ArbolBinario {
     }
 
     private Nodo buscarRecursivo(Nodo actual, int id) {
-        if (actual == null || actual.id == id) {
+        if (actual == null || actual.empleado.getId() == id) {
             return actual;
         }
-        return (id < actual.id) ? buscarRecursivo(actual.izquierdo, id) : buscarRecursivo(actual.derecho, id);
+        return (id < actual.empleado.getId())
+                ? buscarRecursivo(actual.izquierdo, id)
+                : buscarRecursivo(actual.derecho, id);
     }
 
     // Eliminar nodo
@@ -48,9 +52,9 @@ public class ArbolBinario {
             return null;
         }
 
-        if (id < actual.id) {
+        if (id < actual.empleado.getId()) {
             actual.izquierdo = eliminarRecursivo(actual.izquierdo, id);
-        } else if (id > actual.id) {
+        } else if (id > actual.empleado.getId()) {
             actual.derecho = eliminarRecursivo(actual.derecho, id);
         } else {
             // Caso 1: sin hijos
@@ -65,9 +69,8 @@ public class ArbolBinario {
             }
             // Caso 3: dos hijos
             Nodo sucesor = encontrarMinimo(actual.derecho);
-            actual.id = sucesor.id;
-            actual.nombre = sucesor.nombre;
-            actual.derecho = eliminarRecursivo(actual.derecho, sucesor.id);
+            actual.empleado = sucesor.empleado;
+            actual.derecho = eliminarRecursivo(actual.derecho, sucesor.empleado.getId());
         }
         return actual;
     }
@@ -88,7 +91,7 @@ public class ArbolBinario {
     private void inOrdenRec(Nodo actual) {
         if (actual != null) {
             inOrdenRec(actual.izquierdo);
-            System.out.print(actual.id + " (" + actual.nombre + ") ");
+            System.out.print(actual.empleado + " | ");
             inOrdenRec(actual.derecho);
         }
     }
@@ -100,7 +103,7 @@ public class ArbolBinario {
 
     private void preOrdenRec(Nodo actual) {
         if (actual != null) {
-            System.out.print(actual.id + " (" + actual.nombre + ") ");
+            System.out.print(actual.empleado + " | ");
             preOrdenRec(actual.izquierdo);
             preOrdenRec(actual.derecho);
         }
@@ -115,7 +118,8 @@ public class ArbolBinario {
         if (actual != null) {
             postOrdenRec(actual.izquierdo);
             postOrdenRec(actual.derecho);
-            System.out.print(actual.id + " (" + actual.nombre + ") ");
+            System.out.print(actual.empleado + " | ");
         }
     }
 }
+
